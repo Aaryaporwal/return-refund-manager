@@ -1,0 +1,47 @@
+
+### 1. Create a return request (older purchase date)
+POST http://localhost:8081/returns
+Content-Type: application/json
+
+{
+    "customerName": "Aarya",
+    "productName": "Bluetooth Speaker",
+    "reason": "Changed my mind",
+    "status": "REQUESTED",
+    "purchaseDate": "2026-10-20"
+}
+
+###
+
+### 2. Get all return requests
+GET http://localhost:8081/returns
+
+###
+
+### 3. Check eligibility for existing request ID 3
+GET http://localhost:8081/returns/3/eligibility
+
+###
+
+### 4. Create a new eligible return request
+POST http://localhost:8081/returns
+Content-Type: application/json
+
+{
+    "customerName": "Aarya",
+    "productName": "Wireless Mouse",
+    "reason": "Wrong product",
+    "status": "REQUESTED",
+    "purchaseDate": "2026-11-05"
+}
+
+###
+
+### 5. Update return request status
+PUT http://localhost:8081/returns/3/status
+Content-Type: text/plain
+
+APPROVED
+###
+### 6. Check eligibility for Wireless Mouse
+GET http://localhost:8081/returns/6/eligibility
